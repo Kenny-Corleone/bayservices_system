@@ -18,6 +18,7 @@ services:
       - key: REDIS_URL
         fromService:
           name: bayservices-redis
+          type: redis
           property: connectionString
 
   - type: web
@@ -35,7 +36,7 @@ services:
     plan: free
     ipAllowList:
       - source: "0.0.0.0/0"
-        description: "Allow all IPs for backend"
+        description: "Allow backend access"
 
 databases:
   - name: bayservices-db
