@@ -12,15 +12,13 @@ services:
       - key: JWT_SECRET
         value: supersecret
       - key: DATABASE_URL
-        fromService:
-            name: bayservices-db
-            type: postgres
-            property: connectionString
+        fromDatabase:
+          name: bayservices-db
+          property: connectionString
       - key: REDIS_URL
         fromService:
-            name: bayservices-redis
-            type: redis
-            property: connectionString
+          name: bayservices-redis
+          property: connectionString
 
   - type: web
     name: bayservices-frontend
@@ -35,6 +33,7 @@ services:
   - type: redis
     name: bayservices-redis
     plan: free
+    ipAllowList: ["0.0.0.0/0"]
 
 databases:
   - name: bayservices-db
