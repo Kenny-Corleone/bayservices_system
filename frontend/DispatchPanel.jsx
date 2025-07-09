@@ -1,0 +1,1 @@
+export default function DispatchPanel() { return <div>Dispatch UI</div>; }

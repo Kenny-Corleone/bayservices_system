@@ -1,0 +1,1 @@
+export default function ManagementDashboard() { return <div>Dashboard UI</div>; }

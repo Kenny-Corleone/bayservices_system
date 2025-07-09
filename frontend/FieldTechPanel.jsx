@@ -1,0 +1,1 @@
+export default function FieldTechPanel() { return <div>FieldTech UI</div>; }
