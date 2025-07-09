@@ -1,0 +1,17 @@
+# render.yaml
+services:
+  - type: web
+    name: bayservices-app
+    env: docker
+    plan: free
+    repo: https://github.com/Kenny-Corleone/bayservices_system
+    region: frankfurt
+    autoDeploy: true
+    envVars:
+      - key: JWT_SECRET
+        value: supersecret
+      - key: DATABASE_URL
+        value: postgres://postgres:postgres@postgres:5432/bsi_task_db
+      - key: REDIS_URL
+        value: redis://redis:6379
+
