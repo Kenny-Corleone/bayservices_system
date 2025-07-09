@@ -13,14 +13,14 @@ services:
         value: supersecret
       - key: DATABASE_URL
         fromService:
-          name: bayservices-db
-          type: postgres
-          property: connectionString
+            name: bayservices-db
+            type: postgres
+            property: connectionString
       - key: REDIS_URL
         fromService:
-          name: bayservices-redis
-          type: redis
-          property: connectionString
+            name: bayservices-redis
+            type: redis
+            property: connectionString
 
   - type: web
     name: bayservices-frontend
@@ -32,12 +32,10 @@ services:
     staticPublishPath: dist
     autoDeploy: true
 
-databases:
-  - name: bayservices-db
-    plan: free
-
-# 👇 правильно: НЕ redis:, а services: с type: redis
-services:
   - type: redis
     name: bayservices-redis
+    plan: free
+
+databases:
+  - name: bayservices-db
     plan: free
