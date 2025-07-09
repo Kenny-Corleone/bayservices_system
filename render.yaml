@@ -1,11 +1,12 @@
 services:
   - type: web
-    name: bayservices-app
-    env: docker
-    plan: free
+    name: bayservices-backend
+    env: node
     repo: https://github.com/Kenny-Corleone/bayservices_system
     branch: master
-    region: frankfurt
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm run start
     autoDeploy: true
     envVars:
       - key: JWT_SECRET
@@ -21,12 +22,20 @@ services:
           type: redis
           property: connectionString
 
+  - type: web
+    name: bayservices-frontend
+    env: static
+    repo: https://github.com/Kenny-Corleone/bayservices_system
+    branch: master
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+
 databases:
   - name: bayservices-db
     plan: free
-    region: frankfurt
 
 redis:
   - name: bayservices-redis
     plan: free
-    region: frankfurt
