@@ -36,6 +36,8 @@ databases:
   - name: bayservices-db
     plan: free
 
-redis:
-  - name: bayservices-redis
+# 👇 правильно: НЕ redis:, а services: с type: redis
+services:
+  - type: redis
+    name: bayservices-redis
     plan: free
