@@ -33,7 +33,9 @@ services:
   - type: redis
     name: bayservices-redis
     plan: free
-    ipAllowList: ["0.0.0.0/0"]
+    ipAllowList:
+      - source: "0.0.0.0/0"
+        description: "Allow all IPs for backend"
 
 databases:
   - name: bayservices-db
